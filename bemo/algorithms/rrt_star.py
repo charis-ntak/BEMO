@@ -65,6 +65,7 @@ class RRTStarPlanner(PlannerBase):
         bounds = np.asarray(bounds, dtype=float)
 
         self._nodes = [RRTNode(start.copy(), parent=None, cost=0.0)]
+        self._kdtree = None  # reset so stale indices from prior runs aren't used
         self._rebuild_kdtree()
 
         best_goal_idx: Optional[int] = None
